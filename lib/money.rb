@@ -1,12 +1,24 @@
 #Defines attributes related to money in indian currency
 class Money
+	attr_reader :rupees, :paise
 	def initialize(rupee, paisa)
-		@paisas = paisa % 100
+		@paise = paisa % 100
 		@rupees = rupee + (paisa / 100)
 	end
 
 	def in_rupees
-		@rupees + (@paisas/100)
+		@rupees + (@paise/100)
 	end
 
+	def in_paisas
+		(@rupees * 100) + @paise
+	end
+
+	def value
+		"Rupees #{@rupees}, Paise #{@paise}"
+	end
+
+	def +(other_object)
+		Money.new((@rupees + other_object.rupees), (@paise + other_object.paise)) if other_object && self.class == other_object.class
+	end
 end
