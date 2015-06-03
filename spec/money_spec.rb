@@ -100,5 +100,10 @@ describe Money do
 		expect(m1.value_in_string).to eq("Rupees 1 and Paisa 80")
 		end
 
+		it "having value - 1Rs, 80p is Rupee 1" do
+		m1 = Money.new(-0, -80)
+		expect(m1.value_in_string).to eq("Minus Rupees 0 and Paisa 80")
+		end
+
 	end
 end
