@@ -22,6 +22,11 @@ class Money
 		Money.new((@rupees + other_object.rupees), (@paise + other_object.paise)) if other_object && self.class == other_object.class
 	end
 
+	def -(other_object)
+		paise_result = (@rupees * 100 + @paise) - (other_object.rupees * 100 + other_object.paise)
+		Money.new((paise_result / 100).abs , (paise_result % 100).abs)
+	end
+	
 	def ==(other_object)
 		(@rupees == other_object.rupees && @paise == other_object.paise) if other_object && other_object.class == self.class
 	end
