@@ -96,8 +96,8 @@ describe Money do
 		end
 
 		it "having value 1Rs, 0p is Rupee 1" do
-		m1 = Money.new(1, 0)
-		expect(m1.value_in_string).to eq("Rupee 1")
+		m1 = Money.new(1, 80)
+		expect(m1.value_in_string).to eq("Rupees 1 and Paisa 80")
 		end
 
 	end

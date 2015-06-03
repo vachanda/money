@@ -18,8 +18,9 @@ class Money
 	end
 
 	def value_in_string
-		"Rupees "+(@paisa / 100).to_s if @paisa % 100 == 0
-		"Paisa "+@paisa.to_s if @paisa < 100
+		return "Rupees "+(@paisa / 100).to_s if @paisa % 100 == 0 
+		return "Paisa "+@paisa.to_s if @paisa < 100
+		"Rupees "+(@paisa / 100).to_s+" and Paisa "+ (@paisa % 100).to_s
 	end
 
 	def hash
