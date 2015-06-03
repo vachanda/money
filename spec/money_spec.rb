@@ -83,4 +83,22 @@ describe Money do
 			expect(m1-m2).to eq(m3)
 		end
 	end
+
+	context "Value in string" do
+		it "having value 0Rs, 0p is Rupee 0" do
+		m1 = Money.new(0, 0)
+		expect(m1.value_in_string).to eq("Rupees 0")
+		end
+
+		it "having value 0Rs, 80p is Paisa 80" do
+		m1 = Money.new(0, 80)
+		expect(m1.value_in_string).to eq("Paisa 80")
+		end
+
+		it "having value 1Rs, 0p is Rupee 1" do
+		m1 = Money.new(1, 0)
+		expect(m1.value_in_string).to eq("Rupee 1")
+		end
+
+	end
 end

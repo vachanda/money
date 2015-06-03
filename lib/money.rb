@@ -17,6 +17,11 @@ class Money
 		(@paisa == other_object.paisa) if other_object && other_object.class == self.class
 	end
 
+	def value_in_string
+		"Rupees "+(@paisa / 100).to_s if @paisa % 100 == 0
+		"Paisa "+@paisa.to_s if @paisa < 100
+	end
+
 	def hash
 		[@paisa].hash
 	end
