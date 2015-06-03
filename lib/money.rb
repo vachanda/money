@@ -24,7 +24,7 @@ class Money
 
 	def -(other_object)
 		paise_result = (@rupees * 100 + @paise) - (other_object.rupees * 100 + other_object.paise)
-		Money.new((paise_result / 100).abs , (paise_result % 100).abs)
+		Money.new(paise_result / 100 , paise_result % 100)
 	end
 	
 	def ==(other_object)

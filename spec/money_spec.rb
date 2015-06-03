@@ -60,18 +60,42 @@ describe Money do
 		end
 	end
 
-	it "having values as 5Rs, 40p when added with another object having 8Rs, 30p the equivalent sum should be 13Rs, 70p" do
-		m1 = Money.new(5,40)
-		m2 = Money.new(8,30)
-		m3 = Money.new(13,70)
-		expect(m1+m2).to eq(m3)
+	context "Addition" do
+		it "having values as 5Rs, 40p when added with another object having 8Rs, 30p the equivalent sum should be 13Rs, 70p" do
+			m1 = Money.new(5,40)
+			m2 = Money.new(8,30)
+			m3 = Money.new(13,70)
+			expect(m1+m2).to eq(m3)
+		end
+
+		it "having values as 1Rs, 40p when added with another object having 8Rs, 30p the equivalent sum should be 13Rs, 70p" do
+			m1 = Money.new(1,40)
+			m2 = Money.new(8,30)
+			m3 = Money.new(9,70)
+			expect(m1+m2).to eq(m3)
+		end
 	end
 	
-	it "having values as 5Rs, 40p when subtracted with another object having 2Rs, 40p the equivalent difference should be 3Rs" do
-		m1 = Money.new(5, 30)
-		m2 = Money.new(8, 30)
-		m3 = Money.new(3, 0)
-		expect(m1-m2).to eq(m3)
-	end
+	context "Subtraction" do
+		it "having values as 5Rs, 30p when subtracted with another object having 2Rs, 30p the equivalent difference should be 3Rs" do
+			m1 = Money.new(5, 30)
+			m2 = Money.new(2, 30)
+			m3 = Money.new(3, 0)
+			expect(m1-m2).to eq(m3)
+		end
 
+		it "having values as 5Rs, 30p when subtracted with another object having 5Rs, 30p the equivalent difference should be 0Rs" do
+			m1 = Money.new(5, 30)
+			m2 = Money.new(5, 30)
+			m3 = Money.new(0, 0)
+			expect(m1-m2).to eq(m3)
+		end
+
+		it "having values as 5Rs, 40p when subtracted with another object having 8Rs, 40p the equivalent difference should be -3Rs" do
+			m1 = Money.new(5, 40)
+			m2 = Money.new(8, 40)
+			m3 = Money.new(-3, 0)
+			expect(m1-m2).to eq(m3)
+		end
+	end
 end
