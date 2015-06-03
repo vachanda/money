@@ -21,4 +21,17 @@ class Money
 	def +(other_object)
 		Money.new((@rupees + other_object.rupees), (@paise + other_object.paise)) if other_object && self.class == other_object.class
 	end
+
+	def ==(other_object)
+		(@rupees == other_object.rupees && @paise == other_object.paise) if other_object && other_object.class == self.class
+	end
+
+	def hash
+		[@rupees,@paise].hash
+	end
+
+	def eql?(other_object)
+		self == other_object
+	end
+
 end
