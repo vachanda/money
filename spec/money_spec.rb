@@ -76,12 +76,12 @@ describe Money do
 			expect(m1-m2).to eq(m3)
 		end
 
-		it "having values as 5Rs, 40p when subtracted with another object having 8Rs, 40p the equivalent difference should be -3Rs" do
-			m1 = Money.new(2, 0)
-			m2 = Money.new(0, 90)
-			m3 = Money.new(1, 10)
-			expect(m1-m2).to eq(m3)
+		it "having values as 5Rs, 40p when subtracted with another discount having 8Rs, 40p should throw exception" do
+			m1 = Money.new(5, 40)
+			m2 = Money.new(8, 40)
+			expect{m1-m2}.to raise_error(StandardError, "Money cant be negative")
 		end
+
 	end
 
 	context "Value in string" do
@@ -106,4 +106,5 @@ describe Money do
 		end
 
 	end
+
 end
