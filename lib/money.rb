@@ -3,6 +3,7 @@ class Money
 	attr_reader :paisa
 	def initialize(rupee, paisa)
 		@paisa = paisa + rupee * 100
+		raise NegativeMoneyException, "Money can't be negative" if @paisa < 0
 	end
 
 	def +(other_object)
@@ -20,9 +21,6 @@ class Money
 
 	def to_s
 		str = ""
-		if @paisa < 0
-			str += "Minus "
-		end
 		temp_paisa = @paisa.abs % 100
 		temp_rupees = @paisa.abs / 100
 		if temp_rupees > 0

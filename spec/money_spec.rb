@@ -1,6 +1,11 @@
 require 'spec_helper'
 	
 describe Money do 
+	context "initilize" do
+		it "negative money should throw error" do
+			expect{ Money.new(-10,0)}.to raise_error(NegativeMoneyException, "Money can't be negative")
+		end
+	end
 	context "equality" do
 		it "having values as 3Rs, 30p should be equal to other object having values 3Rs, 30p" do
 			m1 = Money.new(3,30)
@@ -79,7 +84,7 @@ describe Money do
 		it "having values as 5Rs, 40p when subtracted with another discount having 8Rs, 40p should throw exception" do
 			m1 = Money.new(5, 40)
 			m2 = Money.new(8, 40)
-			expect{m1-m2}.to raise_error(RangeError, "Money can't be negative")
+			expect{m1-m2}.to raise_error(NegativeMoneyException, "Money can't be negative")
 		end
 
 	end
@@ -99,12 +104,5 @@ describe Money do
 		m1 = Money.new(1, 80)
 		expect(m1.to_s).to eq("Rupees 1 Paisa 80")
 		end
-
-		it "having value - 1Rs, 80p is Rupee 1" do
-		m1 = Money.new(-1, -80)
-		expect(m1.to_s).to eq("Minus Rupees 1 Paisa 80")
-		end
-
 	end
-
 end
