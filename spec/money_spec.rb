@@ -87,6 +87,12 @@ describe Money do
 			expect{m1-m2}.to raise_error(NegativeMoneyException, "Money can't be negative")
 		end
 
+		it "is object of different calss  should throw exception" do
+			m1 = Money.new(5, 40)
+			m2 = " "
+			expect{m1-m2}.to raise_error(TypeError)
+		end
+
 	end
 
 	context "Value in string" do
