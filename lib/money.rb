@@ -17,14 +17,20 @@ class Money
 		(@paisa == other_object.paisa) if other_object && other_object.class == self.class
 	end
 
-	def value_in_string
-		return "Rupees "+(@paisa / 100).to_s if @paisa % 100 == 0 
-		return "Paisa "+@paisa.to_s if @paisa < 100 && @paisa > 0
-		if (@paisa < 0) then
-			"Minus Rupees "+(-@paisa / 100).to_s+" and Paisa "+ (-@paisa % 100).to_s
-		else
-			"Rupees "+(@paisa / 100).to_s+" and Paisa "+ (@paisa % 100).to_s
+	def to_s
+		str = ""
+		if @paisa < 0
+			str += "Minus "
 		end
+		temp_paisa = @paisa.abs % 100
+		temp_rupees = @paisa.abs / 100
+		if temp_rupees > 0
+			str += "Rupees #{temp_rupees} "
+		end
+		if temp_paisa > 0
+			str += "Paisa #{temp_paisa}"
+		end
+		str.strip
 	end
 
 	def hash
@@ -34,5 +40,4 @@ class Money
 	def eql?(other_object)
 		self == other_object
 	end
-
 end

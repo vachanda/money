@@ -87,22 +87,22 @@ describe Money do
 	context "Value in string" do
 		it "having value 0Rs, 0p is Rupee 0" do
 		m1 = Money.new(0, 0)
-		expect(m1.value_in_string).to eq("Rupees 0")
+		expect(m1.to_s).to eq("")
 		end
 
 		it "having value 0Rs, 80p is Paisa 80" do
 		m1 = Money.new(0, 80)
-		expect(m1.value_in_string).to eq("Paisa 80")
+		expect(m1.to_s).to eq("Paisa 80")
 		end
 
 		it "having value 1Rs, 0p is Rupee 1" do
 		m1 = Money.new(1, 80)
-		expect(m1.value_in_string).to eq("Rupees 1 and Paisa 80")
+		expect(m1.to_s).to eq("Rupees 1 Paisa 80")
 		end
 
 		it "having value - 1Rs, 80p is Rupee 1" do
-		m1 = Money.new(-0, -80)
-		expect(m1.value_in_string).to eq("Minus Rupees 0 and Paisa 80")
+		m1 = Money.new(-1, -80)
+		expect(m1.to_s).to eq("Minus Rupees 1 Paisa 80")
 		end
 
 	end
