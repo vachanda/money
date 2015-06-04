@@ -20,6 +20,14 @@ class Money
 		(@paisa == other_object.paisa) if other_object && other_object.class == self.class
 	end
 
+	def <=>(other_object)
+		@paisa <=> other_object.paisa
+	end
+
+	def >(other_object)
+		@paisa > other_object.paisa
+	end
+		
 	def to_s
 		str = ""
 		temp_paisa = @paisa.abs % 100

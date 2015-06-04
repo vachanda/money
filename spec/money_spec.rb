@@ -111,4 +111,20 @@ describe Money do
 		expect(m1.to_s).to eq("Rupees 1 Paisa 80")
 		end
 	end
+
+	context "Sorting" do
+		it "having value [ (1Rs, 60p), (1Rs, 0p)]" do
+			m1 = Money.new(1, 60)
+			m2 = Money.new(1, 0)
+			money_array = [m1,m2]
+			expect(money_array.sort).to eq([m2,m1])
+		end
+
+		it "having value [ (1Rs, 60p), (1Rs, 0p)]" do
+			m1 = Money.new(1, 60)
+			m2 = Money.new(1, 0)
+			money_array = [m1,m2]
+			expect(m1).to be > m2
+		end
+	end
 end
