@@ -10,7 +10,7 @@ class Money
 	end
 
 	def -(other_object)
-		raise StandardError, "Money cant be negative" if @paisa - other_object.paisa < 0 
+		raise NegativeMoneyException, "Money can't be negative" if @paisa - other_object.paisa < 0 
 		Money.new(0, @paisa - other_object.paisa) if other_object && self.class == other_object.class
 	end
 	

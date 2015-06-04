@@ -79,7 +79,7 @@ describe Money do
 		it "having values as 5Rs, 40p when subtracted with another discount having 8Rs, 40p should throw exception" do
 			m1 = Money.new(5, 40)
 			m2 = Money.new(8, 40)
-			expect{m1-m2}.to raise_error(StandardError, "Money cant be negative")
+			expect{m1-m2}.to raise_error(RangeError, "Money can't be negative")
 		end
 
 	end
